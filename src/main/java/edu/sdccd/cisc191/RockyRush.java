@@ -39,6 +39,8 @@ public class RockyRush extends Application {
     public static SinglyLinkedList<Image> backgrounds = new SinglyLinkedList();
     protected static int count = 0;
 
+    private static LeaderboardRepo player;
+
     @Override
     public void start(Stage primaryStage) {
 
@@ -77,13 +79,12 @@ public class RockyRush extends Application {
     }
 
     @Bean
-    static CommandLineRunner commandLineRunner(LeaderboardRepo player) {
+    CommandLineRunner commandLineRunner(LeaderboardRepo player) {
         return args -> {
-            Player player1 = new Player(1, "Kaden", "3:23");
-            Player player2 = new Player(2, "Ekin", "9:56");
-            player.save(player1);
-            player.save(player2);
+            player.save(new Player(1, "Kaden", "3:23"));
+            player.save(new Player(2, "Ekin", "9:56"));
 
+            this.player = player;
             players = player.findAll();
         };
     }
@@ -122,6 +123,8 @@ public class RockyRush extends Application {
     }
 
     public static void writeToLeaderboard() {
-//
+        // will fix later
+        player.save(new Player(3, adventurer.getPlayerName(), adventurer.getPlayerTime()));
+        players = player.findAll();
     }
 }

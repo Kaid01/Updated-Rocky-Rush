@@ -96,7 +96,7 @@ public class SceneController extends RockyRush {
     /**
      * creates the main menu screen of the game
      */
-    public void createMainScreen() {
+    public static void createMainScreen() {
         if (backgrounds.head.next == null) {
             ActOne bossBattle = new ActOne();
             bossBattle.createScreen();
@@ -217,7 +217,7 @@ public class SceneController extends RockyRush {
      */
     public static void updateLosses() {
         // NAH ID WIN
-        //losses++;
+        losses++;
 
         if (losses == 1) {
             heart1.setImage(new Image("CharacterImages/brokenheart.png"));
@@ -305,7 +305,12 @@ public class SceneController extends RockyRush {
         GameLabel timeLabel = new GameLabel("Your finished time was: " + adventurer.getPlayerTime(), 1000, 70, 64);
         timeLabel.setLayoutY(70);
 
-        root.getChildren().addAll(rockyImage, princessImage, heartImage, thankYouLabel, timeLabel);
+        GameButton exitButton = new GameButton("Exit", 92, 52, 12);
+        exitButton.setLayoutY(340);
+        exitButton.setMnemonicParsing(false);
+        exitButton.setOnAction(event -> createMainScreen());
+
+        root.getChildren().addAll(rockyImage, princessImage, heartImage, thankYouLabel, timeLabel, exitButton);
         currentStage.setScene(new Scene(root));
 
         writeToLeaderboard();
