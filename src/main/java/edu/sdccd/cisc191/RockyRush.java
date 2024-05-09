@@ -36,7 +36,7 @@ public class RockyRush extends Application {
     protected static Label timerLabel = new Label();
     protected static Timeline timer;
     protected static ArrayList<String> games = new ArrayList<>();
-    public static SinglyLinkedList<Image> backgrounds = new SinglyLinkedList();
+    public static SinglyLinkedList<Image> backgrounds = new SinglyLinkedList<>();
     protected static int count = 0;
 
     private static LeaderboardRepo player;
@@ -81,8 +81,8 @@ public class RockyRush extends Application {
     @Bean
     CommandLineRunner commandLineRunner(LeaderboardRepo player) {
         return args -> {
-            player.save(new Player(1, "Kaden", "3:23"));
-            player.save(new Player(2, "Ekin", "9:56"));
+            player.save(new Player(1, "Kaden", "5:50"));
+            player.save(new Player(2, "Ekin", "5:43"));
 
             this.player = player;
             players = player.findAll();

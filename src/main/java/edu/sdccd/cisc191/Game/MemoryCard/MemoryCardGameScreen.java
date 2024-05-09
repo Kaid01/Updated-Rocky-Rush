@@ -1,5 +1,6 @@
 package edu.sdccd.cisc191.Game.MemoryCard;
 
+import edu.sdccd.cisc191.Game.GameButton;
 import edu.sdccd.cisc191.Game.Scenes.ProgressScenes;
 import edu.sdccd.cisc191.Game.Scenes.SceneController;
 import javafx.scene.Node;
@@ -55,8 +56,16 @@ public class MemoryCardGameScreen extends SceneController {
         exitButton.setLayoutX(100);
         exitButton.setLayoutY(20);
 
+        GameButton winButton = new GameButton("Win", 100, 50, 16);
+        winButton.setLayoutY(500);
+        winButton.setLayoutX(10);
+        winButton.setOnMouseClicked(e -> {
+            ProgressScenes.changeScene();
+            createMainScreen();
+        });
+
         // Add components to layout
-        layout.getChildren().addAll(board, playAgainButton, exitButton);
+        layout.getChildren().addAll(board, playAgainButton, exitButton, winButton);
 
         // Set scene
         currentStage.setScene(new Scene(layout));

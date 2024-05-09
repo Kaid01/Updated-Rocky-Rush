@@ -100,12 +100,9 @@ public class SceneController extends RockyRush {
         if (backgrounds.head.next == null) {
             ActOne bossBattle = new ActOne();
             bossBattle.createScreen();
-        }
-//
-        if (count == 0) {
-            //createEndingScreen();
-            FightingStage fightingStage = new FightingStage();
-            fightingStage.createFight();
+//        if (count == 0) {
+//            FightingStage fightingStage = new FightingStage();
+//            fightingStage.createFight();
         } else {
             Pane root = new Pane();
             root.setPrefSize(sceneWidth, sceneHeight);
@@ -216,8 +213,7 @@ public class SceneController extends RockyRush {
      * update player losses
      */
     public static void updateLosses() {
-        // NAH ID WIN
-        losses++;
+//        losses++;
 
         if (losses == 1) {
             heart1.setImage(new Image("CharacterImages/brokenheart.png"));
@@ -308,7 +304,7 @@ public class SceneController extends RockyRush {
         GameButton exitButton = new GameButton("Exit", 92, 52, 12);
         exitButton.setLayoutY(340);
         exitButton.setMnemonicParsing(false);
-        exitButton.setOnAction(event -> createMainScreen());
+        exitButton.setOnAction(event -> createIntroScreen());
 
         root.getChildren().addAll(rockyImage, princessImage, heartImage, thankYouLabel, timeLabel, exitButton);
         currentStage.setScene(new Scene(root));
